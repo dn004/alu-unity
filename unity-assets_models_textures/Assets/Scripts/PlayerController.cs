@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     public float speed = 700f;
     public float jumpForce = 500f;
-    // public bool isGrounded; // Flag to check if the player is grounded
+
     public Transform playerTransform;
     public float minYPosition = -7f;
 
