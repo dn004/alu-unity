@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody rb; // Reference to the Rigidbody component of the player
-    public float speed = 1000f; // Speed of horizontal movement
-    public float jumpForce = 500f; // Force applied when jumping
-    public bool isGrounded; // Flag to check if the player is grounded
+    public Rigidbody rb;
+    public float speed = 700f;
+    public float jumpForce = 500f;
+    // public bool isGrounded; // Flag to check if the player is grounded
+    public Transform playerTransform;
+    public float minYPosition = -7f;
 
     void Start()
     {
@@ -16,9 +19,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
+        }
+
+        if (playerTransform.position.y <= minYPosition)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
@@ -27,7 +35,7 @@ public class PlayerController : MonoBehaviour
         MovePlayer(); // Call MovePlayer function in FixedUpdate for physics calculations
     }
 
-    void OnCollisionEnter(Collision collision)
+    /* void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -41,7 +49,7 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false; // Set isGrounded to false when player exits collision with ground
         }
-    }
+    } */
 
     void MovePlayer()
     {
@@ -49,10 +57,8 @@ public class PlayerController : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
-        if (isGrounded) 
-        {
-            rb.AddForce(movement * speed * Time.deltaTime);
-        }
+
+        rb.AddForce(movement * speed * Time.deltaTime);
     }
 
     void Jump()
