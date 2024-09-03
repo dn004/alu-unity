@@ -642,9 +642,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 3232d430-db78-48a9-9d3d-4095451787f0
-  projectName: 0x02-unity-scripting
-  organizationId: carrie-ybay
+  cloudProjectId: f69da10b-25a7-41dd-b414-e30a86f7c68f
+  projectName: Maze
+  organizationId: dn004
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
