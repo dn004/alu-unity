@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb.constraints = RigidbodyConstraints.FreezeRotation;
+        Time.timeScale = 1f;
     }
 
     void Update()

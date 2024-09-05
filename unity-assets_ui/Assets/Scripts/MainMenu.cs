@@ -21,6 +21,7 @@ public class MainMenu : MonoBehaviour
 
     public void LevelSelect(int level)
     {
+        Time.timeScale = 1f;
 
         switch (level)
         {

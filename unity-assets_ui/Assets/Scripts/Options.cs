@@ -5,6 +5,7 @@ public class OptionsMenu : MonoBehaviour
 {
     public void OnBackButtonPressed()
     {
+        Time.timeScale = 1f;
         LoadPreviousScene();
     }
 
