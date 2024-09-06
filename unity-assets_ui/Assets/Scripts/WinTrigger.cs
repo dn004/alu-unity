@@ -6,14 +6,12 @@ using TMPro;
 
 public class WinTrigger : MonoBehaviour
 {
-    public Timer timer; // Reference to the Timer script
-    public TMP_Text timerText; // Reference to the text to display when player wins
-
-    //private bool hasWon = false; // Flag to track if the player has already won
+    public Timer timer;
+    public TMP_Text timerText;
 
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the player has collided with the WinFlag collider and hasn't already won
+
         if (other.CompareTag("player"))
         {
             // Stop the timer
@@ -25,6 +23,7 @@ public class WinTrigger : MonoBehaviour
 
             // Set flag to true to prevent multiple triggering
             //hasWon = true;
+            timer.Win();
         }
     }
 }
