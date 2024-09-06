@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
     public float mouseSensitivity = 100f;
     private float rotationX = 0f;
 
-    private bool isInverted = false;
+    public bool isInverted = false;
 
     void Start()
     {
