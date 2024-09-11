@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         Time.timeScale = 1f;
     }
 
@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
-
         if (playerTransform.position.y <= minYPosition)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -33,24 +32,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        MovePlayer(); // Call MovePlayer function in FixedUpdate for physics calculations
+        MovePlayer();
     }
-
-    /* void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true; // Set isGrounded to true when player collides with ground
-        }
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false; // Set isGrounded to false when player exits collision with ground
-        }
-    } */
 
     void MovePlayer()
     {
@@ -60,10 +43,16 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
 
         rb.AddForce(movement * speed * Time.deltaTime);
-    }
 
-    void Jump()
-    {
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        if (movement != Vector3.zero)
+        {
+            Quaternion newRotation = Quaternion.LookRotation(movement);
+            rb.MoveRotation(newRotation);
+        }
+
+        void Jump()
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
     }
 }
