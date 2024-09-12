@@ -49,10 +49,10 @@ public class PlayerController : MonoBehaviour
             Quaternion newRotation = Quaternion.LookRotation(movement);
             rb.MoveRotation(newRotation);
         }
+    }
 
-        void Jump()
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
+    void Jump()
+    {
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 }
