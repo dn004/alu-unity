@@ -2938,7 +2938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1047863940
 Animator:
   serializedVersion: 5
@@ -5288,7 +5288,20 @@ MonoBehaviour:
   OptionsButton: {fileID: 1584576380}
   MenuButton: {fileID: 1204870307}
   RestartButton: {fileID: 2141775900}
---- !u!95 &2089680826
+--- !u!114 &2089680830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089680814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4e714bfb4bb24c9b1c171d2586ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TyAnimator: {fileID: 2089680831}
+--- !u!95 &2089680831
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -5297,7 +5310,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089680814}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: d0f18da17e4c6104d9760730681d8fcf, type: 2}
   m_Controller: {fileID: 9100000, guid: 234b11f95d2b4924bac273180b4d969f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -5601,6 +5614,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2807664972193347799, guid: cc4c710b8d8cdf341813ccabedeb0669, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4113859166652827150, guid: cc4c710b8d8cdf341813ccabedeb0669, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -5675,7 +5692,10 @@ PrefabInstance:
       addedObject: {fileID: 2089680822}
     - targetCorrespondingSourceObject: {fileID: 5771938190706816274, guid: cc4c710b8d8cdf341813ccabedeb0669, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2089680826}
+      addedObject: {fileID: 2089680831}
+    - targetCorrespondingSourceObject: {fileID: 5771938190706816274, guid: cc4c710b8d8cdf341813ccabedeb0669, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2089680830}
   m_SourcePrefab: {fileID: 100100000, guid: cc4c710b8d8cdf341813ccabedeb0669, type: 3}
 --- !u!1001 &4454842331019677015
 PrefabInstance:
