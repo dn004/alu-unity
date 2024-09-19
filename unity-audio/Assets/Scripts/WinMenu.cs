@@ -26,7 +26,7 @@ public class WinMenu : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         // Handle levels 0 (Level 1), 1 (Level 2), 2 (Level 3)
-        if (currentSceneIndex < 2)
+        if (currentSceneIndex > 1 && currentSceneIndex < 4)
         {
             SceneManager.LoadScene(currentSceneIndex + 1);  // Load the next level
         }
