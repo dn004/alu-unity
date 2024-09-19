@@ -1,42 +1,45 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System;
+using UnityEngine.Audio;
 
 public class OptionsMenu : MonoBehaviour
 {
-    public Toggle InvertYToggle; // Reference to the toggle in the UI
+    public Toggle InvertYToggle;
+    public Slider BGMSlider;
+    public Slider SFXSlider;
+    public AudioMixer audioMixer;  // Reference to the AudioMixer for SFX
 
-    // Define the event to notify subscribers
-    public static event Action<bool> OnInvertYChanged;
+    public static event System.Action<bool> OnInvertYChanged;
 
     void Start()
     {
-        // Load the saved preference when the options menu is opened
         InvertYToggle.isOn = PlayerPrefs.GetInt("InvertY", 0) == 1;
-
-        // Subscribe the toggle's event to fire when the value changes
         InvertYToggle.onValueChanged.AddListener(delegate { ToggleInvertY(InvertYToggle.isOn); });
+
+        BGMSlider.value = PlayerPrefs.GetFloat("BGMVolume", 1f);
+        SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        BGMSlider.onValueChanged.AddListener(SetBGMVolume);
+        SFXSlider.onValueChanged.AddListener(SetSFXVolume);
     }
 
-    // Method called when the toggle value changes
+
     private void ToggleInvertY(bool isOn)
     {
-        OnInvertYChanged?.Invoke(isOn); // Fire the event to notify listeners
+        OnInvertYChanged?.Invoke(isOn);
     }
 
-    // Apply the changes made in the Options menu
     public void Apply()
     {
-        // Save the Invert Y-Axis preference
         PlayerPrefs.SetInt("InvertY", InvertYToggle.isOn ? 1 : 0);
-        PlayerPrefs.Save(); // Ensure the preferences are saved
+        PlayerPrefs.SetFloat("BGMVolume", BGMSlider.value);
+        PlayerPrefs.SetFloat("SFXVolume", SFXSlider.value);
+        PlayerPrefs.Save();
 
-        // Return to the previous scene
         LoadPreviousScene();
     }
 
-    // Go back to the previous scene without saving changes
+
     public void Back()
     {
         LoadPreviousScene();
@@ -46,5 +49,15 @@ public class OptionsMenu : MonoBehaviour
     {
         string previousScene = SceneManagerHelper.PreviousScene;
         SceneManager.LoadScene(previousScene);
+    }
+
+    private void SetBGMVolume(float volume)
+    {
+        audioMixer.SetFloat("BGMVolume", Mathf.Log10(volume) * 20);  // Convert to dB
+    }
+
+    private void SetSFXVolume(float volume)
+    {
+        audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);  // Convert to dB
     }
 }

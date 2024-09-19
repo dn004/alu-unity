@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FootstepController : MonoBehaviour
@@ -13,6 +11,7 @@ public class FootstepController : MonoBehaviour
 
     private string currentSurface = "Grass";
     private bool isFalling = false;
+
     void Update()
     {
         DetectFalling();

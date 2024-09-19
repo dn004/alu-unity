@@ -634,6 +634,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InvertYToggle: {fileID: 22042213}
+  BGMSlider: {fileID: 718753048}
+  SFXSlider: {fileID: 1002906196}
+  audioMixer: {fileID: 24100000, guid: d4f8abf1dc087ce4c95b1e99dc46256d, type: 2}
 --- !u!1 &623556584
 GameObject:
   m_ObjectHideFlags: 0

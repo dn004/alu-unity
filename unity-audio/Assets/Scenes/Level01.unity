@@ -4802,6 +4802,7 @@ GameObject:
   - component: {fileID: 1901427568}
   - component: {fileID: 1901427567}
   - component: {fileID: 1901427566}
+  - component: {fileID: 1901427569}
   m_Layer: 0
   m_Name: BGMController
   m_TagString: Untagged
@@ -4832,7 +4833,7 @@ AudioSource:
   m_GameObject: {fileID: 1901427565}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 301f835ba9a2e9c4a9fb48497e28dfe0, type: 2}
+  OutputAudioMixerGroup: {fileID: -1884676649499399404, guid: d4f8abf1dc087ce4c95b1e99dc46256d, type: 2}
   m_audioClip: {fileID: 8300000, guid: 5c3782e81f088934889ee16fdbe92741, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -4934,6 +4935,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901427569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901427565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de667739bb0d7e4082dee7a1ad07348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1929912899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 9ae429185e353d249b65d25a866a8db1, type: 3}
@@ -5988,6 +6001,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7938038362823382188, guid: 51ffe915bd52b5348bd8cd52a4a5cfb3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6012,6 +6029,10 @@ PrefabInstance:
     - target: {fileID: 5771938190706816274, guid: cc4c710b8d8cdf341813ccabedeb0669, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771938190706816274, guid: cc4c710b8d8cdf341813ccabedeb0669, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5771938190706816274, guid: cc4c710b8d8cdf341813ccabedeb0669, type: 3}
       propertyPath: m_TagString
