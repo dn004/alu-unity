@@ -6,11 +6,14 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     public TMP_Text timerText;
-    public TMP_Text finalTimeText;  // Reference to the FinalTime text on the WinCanvas
-    public GameObject winCanvas;    // Reference to the WinCanvas
+    public TMP_Text finalTimeText; 
+    public GameObject winCanvas;
+    public AudioSource winSound;
+    public BGMController bgmController; 
 
     private float elapsedTime = 0f;
-    private bool isRunning = true;  // Added to control timer updates
+    private bool isRunning = true;  
+    private bool hasPlayedWinSound = false;  
 
     void Update()
     {
@@ -30,14 +33,25 @@ public class Timer : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
     }
 
-    // Called when the player reaches the finish line (from WinTrigger)
     public void Win()
     {
-        // Stop the timer
         isRunning = false;
 
-        // Show final time on the WinCanvas
-        winCanvas.SetActive(true);  // Activate the WinCanvas
-        finalTimeText.text = timerText.text;  // Display the current timer text as the final time
+        winCanvas.SetActive(true);  
+        finalTimeText.text = timerText.text;
+
+        if (bgmController != null)
+        {
+            bgmController.StopBGM();
+        }
+
+        if (!hasPlayedWinSound)
+        {
+            if (winSound != null)
+            {
+                winSound.Play();
+            }
+            hasPlayedWinSound = true;
+        }
     }
 }
